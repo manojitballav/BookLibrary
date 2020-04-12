@@ -8,17 +8,17 @@ from app import avatars
 
 
 class EditProfileForm(FlaskForm):
-    name = StringField(u'用户名', validators=[DataRequired(message=u"该项忘了填写了!"), Length(1, 64, message=u"长度为1到64个字符")])
-    major = StringField(u'主修专业', validators=[Length(0, 128, message=u"长度为0到128个字符")])
-    headline = StringField(u'一句话介绍自己', validators=[Length(0, 32, message=u"长度为32个字符以内")])
-    about_me = PageDownField(u"个人简介")
-    submit = SubmitField(u"保存更改")
+    name = StringField(u'Username', validators=[DataRequired(message=u"Cannot be blank!"), Length(1, 64, message=u"Less than 64 character")])
+    major = StringField(u'Major', validators=[Length(0, 128, message=u"Less than 128 characters")])
+    headline = StringField(u'About Yourself', validators=[Length(0, 32, message=u"Less than 32 characters")])
+    about_me = PageDownField(u"Personal Profile")
+    submit = SubmitField(u"Save")
 
 
 class AvatarEditForm(FlaskForm):
-    avatar_url = StringField('', validators=[Length(1, 100, message=u"长度限制在100字符以内"), URL(message=u"请填写正确的URL")])
-    submit = SubmitField(u"保存")
+    avatar_url = StringField('', validators=[Length(1, 100, message=u"Length limited to 100 characters"), URL(message=u"Fill correct url")])
+    submit = SubmitField(u"Save")
 
 
 class AvatarUploadForm(FlaskForm):
-    avatar = FileField('', validators=[FileAllowed(avatars, message=u"只允许上传图片")])
+    avatar = FileField('', validators=[FileAllowed(avatars, message=u"Only images")])
